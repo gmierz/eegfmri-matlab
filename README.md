@@ -1,4 +1,5 @@
 # eegfmri-matlab
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3711405.svg)](https://doi.org/10.5281/zenodo.3711405)
 
 This repository contains scripts for cleaning EEG data contaminated with gradient, and ballistocardiogram (BCG) artifacts.
 
@@ -16,3 +17,5 @@ For example, see the following figure of a set of BCG ICA components.
 The BCG component 1 (first requested input from `eegfmri_clean`) has nice peaks, and it has a polarity of -1 (second requested input from `eegfmri_clean`). The BCG component 4 is also nice, and it has a polarity of 1. It's possible that we could automate this, but we find this is a nice trade-off between automation failures, and human intervention.
 
 This code is licensed under GPLv3. Please contact us if you need a different license.
+
+If you use these scripts in your work, please consider referencing this repository using the Zenodo reference in the badge at the top of this readme.
