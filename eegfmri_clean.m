@@ -16,7 +16,7 @@ function [neweeg] = eegfmri_clean(EEG, output_name, minpeaks, epochls, gradientc
 %       EEG             -  The raw EEG data, should have a 5000Hz sampling rate.
 %   OPTIONAL INPUT:
 %       output_name     -  The name of the output of the cleaned EEG, if it's
-%                          not given, defaults to `clean_eeg.set`.
+%                          not given, the data won't be saved.
 %       minpeaks        -  The minimum distance (in points) between the BCG
 %                          artifacts (defaults to 180 points).
 %       epochls         -  Size of the BCG artifact to extract (defaults to
@@ -50,8 +50,8 @@ function [neweeg] = eegfmri_clean(EEG, output_name, minpeaks, epochls, gradientc
 
     % Setup optional arguments
     if ~exist('output_name', 'var') || isempty(output_name)
-        output_name = 'clean_eeg.set';
-        disp('Output name was not provided, saving data as clean_eeg.set');
+        output_name = '';
+        disp('Output name was not provided, not saving data');
     end
     if ~exist('minpeaks', 'var') || isempty(minpeaks)
         minpeaks = 180;
@@ -116,7 +116,9 @@ function [neweeg] = eegfmri_clean(EEG, output_name, minpeaks, epochls, gradientc
         end
     end
 
-    pop_saveset(neweeg, 'filename', output_name)
+    if ~isempty(output_name)
+        pop_saveset(neweeg, 'filename', output_name)
+    end
 end
 
 
